@@ -183,16 +183,16 @@ def get_data(userChoice):
             d[city] = state
 
     os.system('cls')
-    #save_as = input("Please enter a name to save the excel sheet as: ")
+    save_as = input("Please enter a name to save the excel sheet as: ")
 
-    #if ".xlsx" not in save_as:
-        #save_as += ".xlsx"
+    if ".xlsx" not in save_as:
+        save_as += ".xlsx"
 
     os.system("cls")
     print("Grabbing Data...")
 
-    #workbook = Workbook()
-    #worksheet = create_workbook(workbook, save_as)
+    workbook = Workbook()
+    worksheet = create_workbook(workbook, save_as)
     r = 2
 
     for entry in d:
@@ -210,13 +210,13 @@ def get_data(userChoice):
             housing = neighbourhood_scraper.get_housing_market(state, city)
             print(f"The median home value in {city}, {state} is {housing}")
 
-            #worksheet.cell(row=r, column=1, value=city)
-            #worksheet.cell(row=r, column=2, value=state)
-            #worksheet.cell(row=r, column=3, value=housing)
-            #worksheet.cell(row=r, column=4, value=crime + " out of 100")
+            worksheet.cell(row=r, column=1, value=city)
+            worksheet.cell(row=r, column=2, value=state)
+            worksheet.cell(row=r, column=3, value=housing)
+            worksheet.cell(row=r, column=4, value=crime + " out of 100")
 
             r += 1
-            #workbook.save(save_as)
+            workbook.save(save_as)
             print("")
 
         except:
@@ -225,7 +225,7 @@ def get_data(userChoice):
             print(f"No Data Found for {city}, {state}")
             print("Please ensure you have entered a valid city and state (note that neighborhoods may not have free data available).")
     
-    #workbook_table(workbook)
+    workbook_table(workbook)
 
 if __name__ == "__main__":
     main()
